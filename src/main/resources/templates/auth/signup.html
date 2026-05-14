@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head :: head(${title})}"></head>
+<body>
+<main class="auth-page">
+	<h1 class="page-label standalone">회원가입</h1>
+	<section class="auth-card">
+		<h2>LXP 회원가입</h2>
+		<form th:action="@{/signup}" method="post" class="form-stack">
+			<label>이메일<input type="email" name="email" value="name@example.com"></label>
+			<label>비밀번호<input type="password" name="password" placeholder="최소 8자 조건 충족"></label>
+			<label>이름<input name="name" value="홍길동"></label>
+			<button class="btn primary" type="submit">회원가입</button>
+		</form>
+		<p class="helper">이미 계정이 있나요? <a th:href="@{/login}">로그인</a></p>
+	</section>
+</main>
+</body>
+</html>

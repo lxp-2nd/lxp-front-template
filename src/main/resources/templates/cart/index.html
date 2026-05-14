@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head :: head(${title})}"></head>
+<body>
+<div th:replace="~{fragments/header :: appHeader(${title})}"></div>
+<main class="container">
+	<section class="section-heading">
+		<h1>장바구니</h1>
+		<p>신청 전 담아둔 무료 강의를 확인하고 선택 신청합니다.</p>
+	</section>
+
+	<section class="cart-layout">
+		<div class="cart-list">
+			<article class="cart-item" th:each="course : ${courses}">
+				<input type="checkbox" checked aria-label="강의 선택">
+				<div class="small-thumb"></div>
+				<div>
+					<h2 th:text="${course.title}">프론트엔드 입문</h2>
+					<p th:text="${course.instructor}">강사명</p>
+				</div>
+				<button class="btn ghost" type="button">삭제</button>
+			</article>
+		</div>
+		<aside class="summary-card">
+			<h2>선택 강의</h2>
+			<p><strong th:text="${courses.size()}">3</strong>개 강의 선택됨</p>
+			<form th:action="@{/cart/enroll}" method="post">
+				<button class="btn primary full" type="submit">선택 강의 신청</button>
+			</form>
+		</aside>
+	</section>
+</main>
+</body>
+</html>
